@@ -1,0 +1,50 @@
+<openerp>
+    <data>
+      
+      <record id="view_openeducat_erp_student_wizard" model="ir.ui.view">
+        <field name="name">openeducat_erp.student_wizard</field>
+        <field name="model">openeducat_erp.student_wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="operating_unit_id" required="1"/>
+                            <field name="batch_id"/>
+                        </group>
+                        <group>
+                            <field name="course_id"/>
+                            <field name="standard_id"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Filtrar por grupos">
+                            <field name="division_ids"/>
+                        </page>
+                        <page string="Estudiantes">
+                            <field name="sdutend_ids"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                
+                <footer>
+                    <button type="object" name="print_report" string="Imprimir Reporte" class="oe_highlight" />
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+      </record>
+      
+    <act_window id="openeducat_erp.students" 
+        name="Reporte Estudiantes" 
+        src_model="op.division" 
+        res_model="openeducat_erp.student_wizard" 
+        view_mode="form" 
+        target="new" />
+    
+    <menuitem action="openeducat_erp.students" id="menu_student_report" parent="base.menu_sales" sequence="6" />
+   
+    </data>
+</openerp>

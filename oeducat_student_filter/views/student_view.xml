@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record id="view_op_roll_number_filter_search" model="ir.ui.view">
+			<field name="name">op.roll.number.filter.search</field>
+			<field name="model">op.roll.number</field>
+      <field name="inherit_id" ref="openeducat_erp.view_op_roll_number_search"/>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+          <field name="student_id" position="after">
+              <field name="division_id"/>
+              <field name="operating_unit_id"/>
+          </field>
+          <filter string="Student" position="after">
+              <filter string="Grupo" domain="[]" context="{'group_by':'division_id'}" />
+              <filter string="Sucursal" domain="[]" context="{'group_by':'operating_unit_id'}" />
+          </filter>
+			</field>
+		</record>
+   
+   
+
+	</data>
+</openerp>

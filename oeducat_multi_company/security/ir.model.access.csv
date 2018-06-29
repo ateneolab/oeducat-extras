@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oeducat_multi_company_oeducat_multi_company,oeducat_multi_company.oeducat_multi_company,model_oeducat_multi_company_oeducat_multi_company,,1,0,0,0

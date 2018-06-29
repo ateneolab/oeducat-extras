@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oeducat_student_filter_oeducat_student_filter,oeducat_student_filter.oeducat_student_filter,model_oeducat_student_filter_oeducat_student_filter,,1,0,0,0

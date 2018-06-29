@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_op_attendance_sheet_tree" model="ir.ui.view">
+            <field name="name">op.attendance.sheet.tree</field>
+            <field name="model">op.attendance.sheet</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_attendance_sheet_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="attendance_line" position="replace">
+                    <field name="attendance_line" colspan="4" nolabel="1">
+                        <tree string="Attendance Line" editable="top">
+                            <field name="contract_payment_up_to_date" invisible="1"/>
+                            <field name="student_id"/>
+                            <field name="present"/>
+                            <field name="remark"/>
+                        </tree>
+                    </field>
+                </field>
+                <xpath expr="//tree[@string='Attendance Line']" position="attributes">
+                    <attribute name="colors">
+                        red:contract_payment_up_to_date==False;green:contract_payment_up_to_date==True
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

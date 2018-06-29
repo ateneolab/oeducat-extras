@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Custom report.-->
+<openerp>
+    <data>
+
+        <record id="paperformat_rpm" model="report.paperformat">
+            <field name="name">RPM Paperformat</field>
+            <field name="orientation">Landscape</field>
+        </record>
+
+        <template id="invoice_external_layout_footer">
+            <t t-name="report.invoice_external_layout_footer">
+                <div class="footer">
+                    <!--<div class="text-center" style="border-top: 1px solid black;"></div>-->
+                </div>
+            </t>
+        </template>
+
+        <template id="invoice_external_layout_header">
+            <t t-name="report.invoice_external_layout_header">
+                <div class="header">
+                    <!--<div class="text-center" style="border-top: 1px solid black;"></div>-->
+                </div>
+            </t>
+        </template>
+
+        <template id="student_external_layout">
+            <t t-name="report.invoice_external_layout">
+
+                <t t-call="l10n_ec_reports.invoice_external_layout_header"/>
+                <t t-raw="0"/>
+                <t t-call="l10n_ec_reports.invoice_external_layout_footer"/>
+            </t>
+        </template>
+
+        <template id="openeducat_erp.report_students_document">
+            <t t-call="oeducat_student_filter.student_external_layout">
+                <div class="page" style="font-size:13px">
+
+                    <h2 style="text-align: center"><![CDATA[REPORTE DE ESTUDIANTES POR SUCURSAL]]></h2>
+                    
+                    <br/>
+                    <br/>
+                    
+                    <!--<span t-esc="o"></span>-->
+                    
+                    <t t-foreach="o.division_ids" t-as="doc" style=" line-height: 5%; border: 1px solid #ddd">
+                        <h4 style="text-align: left"><span t-esc="doc.name"/></h4>
+                        
+                        <t t-set="roll_numbers" t-value="get_roll_numbers(doc)"/>
+                        
+                        <table class="table table-condensed" style="border: 1px solid #ddd; width: 100%">
+                            <thead>
+                                <tr style="background-color: LAVENDER;">
+                                    <th style="width:10%;">No.</th>
+                                    <th style="width:30%;">Estudiante</th>
+                                    <th style="width:25%;">Curso</th>
+                                    <th style="width:20%;"><![CDATA[Edición]]></th>
+                                    <th style="width:15%;"><![CDATA[Año]]></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="roll_numbers" t-as="rn">
+                                    <td>
+                                        <span t-esc="rn.roll_number"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="rn.student_id.partner_id.display_name"/>
+                                        <span t-esc="rn.student_id.last_name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="rn.course_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="rn.batch_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="rn.standard_id.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+
+                </div>
+            </t>
+        </template>
+
+        <template id="report_students">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="openeducat_erp.report_students_document"/>
+                </t>
+            </t>
+        </template>
+        
+        <!--<report
+             id="report_contract"
+             model="education_contract.contract"
+             string="RPM"
+             report_type="qweb-pdf"
+             name="education_contract.report_rpm"
+             attachment_use="False"
+             file="education_contract.report_rpm"
+        />-->
+
+        <record id="students_report" model="ir.actions.report.xml">
+            <field name="name">students_report</field>
+            <field name="paperformat_id" ref="paperformat_rpm"/>
+            <field name="model">op.division</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">oeducat_student_filter.report_students</field>
+            <field name="attachment_use" eval="False"></field>
+        </record>
+
+    </data>
+</openerp>
