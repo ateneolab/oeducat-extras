@@ -20,6 +20,7 @@
 ###############################################################################
 
 from openerp import models, fields, api
+import datetime
 
 
 class RollNumber(models.Model):

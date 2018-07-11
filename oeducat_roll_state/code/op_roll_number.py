@@ -25,6 +25,8 @@ from openerp import models, fields, api
 class OpRollNumber(models.Model):
     _name = 'op.roll.number'
     _inherit = 'op.roll.number'
-    
-    state = fields.Selection([('active', u'Active'), ('inactive', u'Inactive'), ('done', u'Terminated')], default='active')
-    date_state = fields.Datetime('Date change state')
+
+    state = fields.Selection(
+        [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado')],
+        default='active', string=u'Estado')
+    date_state = fields.Datetime(u'Fecha de cambio de estado')
