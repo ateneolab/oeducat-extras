@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="seq_roll_number_type" model="ir.sequence.type">
+            <field name="name">Roll Number</field>
+            <field name="code">seq.roll.number</field>
+        </record>
+
+        <record id="seq_roll_number" model="ir.sequence">
+            <field name="name">Roll Number</field>
+            <field name="code">seq.roll.number</field>
+            <!--<field name="prefix">ME</field>-->
+            <field name="padding">7</field>
+        </record>
+
+    </data>
+</openerp>
