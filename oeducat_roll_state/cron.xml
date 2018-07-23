@@ -1,0 +1,14 @@
+<openerp>
+    <data noupdate="1">
+        <record id="cron_freezing_state_update" model="ir.cron">
+            <field name="name">Actualizar congelamiento de matriculas</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doal" eval="False"/>
+            <field name="model">oeducat.cron.freezing.state</field>
+            <field name="function" eval="'update_freezing_state'"/>
+        </record>
+    </data>
+</openerp>

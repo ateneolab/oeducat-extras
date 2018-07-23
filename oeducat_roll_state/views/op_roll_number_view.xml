@@ -12,40 +12,57 @@
                     <field name="state" string="Estado"/>
                     <field name="date_state" string="Fecha de cambio de estado"/>
                 </field>
+
+                <field name="course_id" position="before">
+                    <field name="student_id" string="Estudiante"/>
+                </field>
             </field>
         </record>
 
-        <!--<record id="view_op_roll_number_search" model="ir.ui.view">-->
-            <!--<field name="name">op.roll.number.search</field>-->
-            <!--<field name="model">op.roll.number</field>-->
-            <!--<field name="inherit_id" ref="openeducat_erp.view_op_roll_number_search"/>-->
-            <!--<field name="priority" eval="8"/>-->
-            <!--<field name="arch" type="xml">-->
-                <!--<field name="student_id" position="after">-->
-                    <!--<field name="contract_id"/>-->
-                <!--</field>-->
-                <!--<filter string="Student" position="after">-->
-                    <!--<filter string="Contrato" domain="[]" context="{'group_by':'contract_id'}"/>-->
-                <!--</filter>-->
 
-                <!--<search string="Roll Number">
-                    <field name="roll_number" />
-                    <field name="course_id" />
-                    <field name="batch_id" />
-                    <field name="standard_id" />
-                    <field name="student_id" />
-                    <newline />
-                    <group expand="0" string="Group By...">
-                        <filter string="Roll Number" domain="[]"
-                            context="{'group_by':'roll_number'}" />
-                        <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
-                        <filter string="Batch" domain="[]" context="{'group_by':'batch_id'}" />
-                        <filter string="Standard" domain="[]"
-                            context="{'group_by':'standard_id'}" />
-                        <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
-                    </group>
-                </search>-->
-            <!--</field>-->
+        <!--<record id="view_op_roll_number_form3" model="ir.ui.view">-->
+        <!--<field name="name">op.roll.number.form3</field>-->
+        <!--<field name="model">op.roll.number</field>-->
+        <!--<field name="inherit_id" ref="oeducat_roll_state.view_op_roll_number_form2"/>-->
+        <!--<field name="priority" eval="8"/>-->
+        <!--<field name="arch" type="xml">-->
+        <!--<field name="date_state" position="after">-->
+        <!--<field name="frozen"/>-->
+        <!--</field>-->
+        <!--</field>-->
+        <!--</record>-->
+
+        <!--<record id="view_op_roll_number_search" model="ir.ui.view">-->
+        <!--<field name="name">op.roll.number.search</field>-->
+        <!--<field name="model">op.roll.number</field>-->
+        <!--<field name="inherit_id" ref="openeducat_erp.view_op_roll_number_search"/>-->
+        <!--<field name="priority" eval="8"/>-->
+        <!--<field name="arch" type="xml">-->
+        <!--<field name="student_id" position="after">-->
+        <!--<field name="contract_id"/>-->
+        <!--</field>-->
+        <!--<filter string="Student" position="after">-->
+        <!--<filter string="Contrato" domain="[]" context="{'group_by':'contract_id'}"/>-->
+        <!--</filter>-->
+
+        <!--<search string="Roll Number">
+            <field name="roll_number" />
+            <field name="course_id" />
+            <field name="batch_id" />
+            <field name="standard_id" />
+            <field name="student_id" />
+            <newline />
+            <group expand="0" string="Group By...">
+                <filter string="Roll Number" domain="[]"
+                    context="{'group_by':'roll_number'}" />
+                <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
+                <filter string="Batch" domain="[]" context="{'group_by':'batch_id'}" />
+                <filter string="Standard" domain="[]"
+                    context="{'group_by':'standard_id'}" />
+                <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
+            </group>
+        </search>-->
+        <!--</field>-->
         <!--</record>-->
 
     </data>

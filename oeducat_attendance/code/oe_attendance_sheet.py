@@ -29,7 +29,8 @@ class RollNumber(models.Model):
 
     @api.one
     def is_contract_payment_up_to_date(self):
-        collection_plan_id = self.env['collection_plan'].search([('contract_id', '=', self.contract_id.id)])
+        collection_plan_id = self.env['collection_plan.collection_plan'].search(
+            [('contract_id', '=', self.contract_id.id)])[:1]
         payment_term_ids = self.env['education_contract.payment_term'].search(
             [('collection_plan_id', '=', collection_plan_id.id), ('planned_date', '<', datetime.datetime.today()),
              ('account_voucher_id', 'in', [False, None])])

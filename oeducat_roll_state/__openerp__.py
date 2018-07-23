@@ -26,7 +26,8 @@
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
-        'views/op_roll_number_view.xml'
+        'views/op_roll_number_view.xml',
+        'cron.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

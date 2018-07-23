@@ -20,6 +20,7 @@
 ###############################################################################
 
 from openerp import models, fields, api
+import datetime
 
 
 class OpRollNumber(models.Model):
@@ -30,3 +31,36 @@ class OpRollNumber(models.Model):
         [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado')],
         default='active', string=u'Estado')
     date_state = fields.Datetime(u'Fecha de cambio de estado')
+
+    @api.onchange('freezing_ids')
+    def _onchange_freezing_ids(self):
+        if self.freezing_ids:
+            today = datetime.datetime.today()
+            for fi in self.freezing_ids:
+                start_date = datetime.datetime.strptime(fi.start_date, '%Y-%m-%d')
+                end_date = datetime.datetime.strptime(fi.end_date, '%Y-%m-%d')
+                if today >= start_date and today < end_date:
+                    self.frozen = True
+                    self.state = 'inactive'
+                    self.date_state = datetime.datetime.today()
+
+    # @api.depends('freezing_ids')
+    # def update_freeze_state(self):
+    #     if self.freezing_ids:
+    #         state = False
+    #         if self.state == 'active':
+    #             for fi in self.freezing_ids:
+    #                 today = datetime.datetime.today()
+    #                 if today >= fi.start_date and today < fi.end_date:
+    #                     self.state = 'inactive'
+    #         elif self.state == 'inactive':
+    #             # change_state = False
+    #             for fi in self.freezing_ids:
+    #                 today = datetime.datetime.today()
+    #                 if today < fi.start_date and today >= fi.end_date:
+    #                     change_state = True
+    #                 else:
+    #                     change_state = False
+    #             if change_state:
+    #                 self.state = 'active'
+    #
