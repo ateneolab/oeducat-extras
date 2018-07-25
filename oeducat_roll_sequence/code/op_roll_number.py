@@ -26,6 +26,8 @@ class OpRollNumber(models.Model):
     _name = 'op.roll.number'
     _inherit = 'op.roll.number'
 
+    roll_number = fields.Char('Roll Number', size=8, required=False)
+
     @api.model
     def create(self, vals):
         res = super(OpRollNumber, self).create(vals)

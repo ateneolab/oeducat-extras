@@ -14,5 +14,17 @@
             <field name="padding">7</field>
         </record>
 
+        <record id="view_op_roll_number_form_hrn" model="ir.ui.view">
+            <field name="name">op.roll.number.form_hrn</field>
+            <field name="model">op.roll.number</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_roll_number_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="roll_number" position="attributes">
+                    <attribute name="attrs">{'invisible': True, 'required': False}</attribute>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
