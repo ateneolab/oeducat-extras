@@ -67,7 +67,7 @@ class GenerateTimeTable(models.TransientModel):
 
     @api.one
     def gen_datewise(self, line, st_date, en_date, self_obj):
-        day_cnt = 6
+        day_cnt = 7
         curr_date = st_date
         while curr_date <= en_date:
             hour = line.period_id.hour
@@ -93,7 +93,7 @@ class GenerateTimeTable(models.TransientModel):
                 'division_id': self_obj.division_id.id,
                 'start_datetime': curr_date.strftime("%Y-%m-%d %H:%M:%S"),
                 'end_datetime': cu_en_date.strftime("%Y-%m-%d %H:%M:%S"),
-                'type': curr_date.strftime('%A'),
+                'type': curr_date.strftime('%w'),
             })
             curr_date = curr_date + datetime.timedelta(days=day_cnt)
 
