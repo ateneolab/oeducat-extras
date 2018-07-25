@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!--<record id="view_op_student_search2" model="ir.ui.view">-->
+        <!--<field name="name">op.student.search2</field>-->
+        <!--<field name="model">op.student</field>-->
+        <!--<field name="inherit_id" ref="openeducat_erp.view_op_student_search"/>-->
+        <!--<field name="arch" type="xml">-->
+        <!--<field name="name">-->
+        <!--<field name="contract_ids"/>-->
+        <!--</field>-->
+        <!--</field>-->
+        <!--</record>-->
+
+        <record id="view_op_student_form_2" model="ir.ui.view">
+            <field name="name">op.student.form_2</field>
+            <field name="model">op.student</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_student_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@string='Educational']" position="replace">
+                    <page string="Educational">
+                        <separator colspan="4" string="Educational Detail"/>
+                        <group col="4" colspan="4">
+                            <field name="course_id" invisible="1"/>
+                            <field name="standard_id" invisible="1"/>
+                            <field name="batch_id" invisible="1"/>
+                            <field name="division_id" invisible="1"/>
+                            <field name="gr_no"/>
+                            <field name="roll_number_line" colspan="4" nolabel="1"
+                                   context="{'default_course_id':course_id,
+                                     'default_batch_id':batch_id,
+                                     'default_standard_id':standard_id,
+                                     'default_division_id':division_id,
+                                     'default_student_id': active_id}"/>
+                        </group>
+                    </page>
+                </xpath>
+                <!--<xpath expr="//page[@string='Educational']/group/field[@name='standard_id']" position="replace">-->
+                <!--<field name="standard_id" position="replace"/>-->
+                <!--</xpath>-->
+                <!--<xpath expr="//page[@string='Educational']/group/field[@name='batch_id']" position="replace">-->
+                <!--<field name="batch_id" position="replace"/>-->
+                <!--</xpath>-->
+                <!--<xpath expr="//page[@string='Educational']/group/field[@name='division_id']" position="replace">-->
+                <!--<field name="division_id" position="replace"/>-->
+                <!--</xpath>-->
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
