@@ -10,7 +10,7 @@
             <field name="arch" type="xml">
                 <field name="division_id" position="after">
                     <field name="state" string="Estado"/>
-                    <field name="date_state" string="Fecha de cambio de estado"/>
+                    <!--<field name="date_state" string="Fecha de cambio de estado" invisible="1"/>-->
                 </field>
 
                 <field name="course_id" position="before">
