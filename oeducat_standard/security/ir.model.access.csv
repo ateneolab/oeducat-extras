@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oeducat_roll_state_oeducat_roll_state,oeducat_roll_state.oeducat_roll_state,model_oeducat_roll_state_oeducat_roll_state,,1,0,0,0

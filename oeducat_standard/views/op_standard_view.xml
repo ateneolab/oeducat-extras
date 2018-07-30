@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_op_standard_oeducat_standard_form" model="ir.ui.view">
+			<field name="name">op.standard.oeducat_standard.form</field>
+			<field name="model">op.standard</field>
+			<field name="inherit_id" ref="openeducat_erp.view_op_standard_form"/>
+			<field name="priority" eval="8" />
+			<field name="arch" type="xml">
+
+				<separator string="Students" position="replace" />
+
+				<field name="student_ids" position="attributes">
+					<attribute name="attrs">{'invisible': '1'}</attribute>
+				</field>
+
+			</field>
+		</record>
+
+    </data>
+</openerp>

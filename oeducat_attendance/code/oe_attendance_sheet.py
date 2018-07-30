@@ -47,9 +47,8 @@ class OpAttendanceSheet(models.Model):
     @api.onchange('register_id', 'register_id.division_id')
     def _compute_attendance_line(self):
         if self.register_id and self.register_id.division_id:
-            roll_number_ids = self.env['op.roll.number'].search([('division_id', '=', self.register_id.division_id.id),
-                                                                 ('state', '=',
-                                                                  'active')])  # falta filtrar por activa (fecha fin no establecida)
+            roll_number_ids = self.env['op.roll.number'].search(
+                [('division_id', '=', self.register_id.division_id.id), ('state', '=', 'active')])
             data_lines = []
             datas = []
 

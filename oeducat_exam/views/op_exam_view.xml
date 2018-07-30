@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!--<record id="view_op_standard_oeducat_standard_form" model="ir.ui.view">-->
+        <!--<field name="name">op.standard.oeducat_standard.form</field>-->
+        <!--<field name="model">op.standard</field>-->
+        <!--<field name="inherit_id" ref="openeducat_erp.view_op_standard_form"/>-->
+        <!--<field name="priority" eval="8"/>-->
+        <!--<field name="arch" type="xml">-->
+
+        <!--<separator string="Students" position="replace"/>-->
+
+        <!--<field name="student_ids" position="attributes">-->
+        <!--<attribute name="attrs">{'invisible': '1'}</attribute>-->
+        <!--</field>-->
+
+        <!--</field>-->
+        <!--</record>-->
+
+        <record id="view_op_exam_oeducat_exam_form" model="ir.ui.view">
+            <field name="name">op.exam.oeducat_exam.form</field>
+            <field name="model">op.exam</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_exam_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <field name="session_id" position="replace">
+                    <field name="session_id" invisible="1"/>
+                </field>
+
+                <field name="venue" position="replace"/>
+                <!--<field name="venue" invisible="1"/>-->
+                <!--</field>-->
+
+                <field name="division_id" position="replace"/>
+
+                <field name="subject_id" position="after">
+                    <field name="division_id" required="1"/>
+                </field>
+
+
+                <!--<form string="Exam" version="7.0">-->
+                <!--<header>-->
+                <!--<span groups="base.group_user">-->
+                <!--<field name="state" widget="statusbar" statusbar_visible="n,h,s,d,c"-->
+                <!--statusbar_colors='{"c":"red"}' />-->
+                <!--<button name="act_held" states="n" type="workflow" string="Held Exam"-->
+                <!--icon="gtk-go-forward" />-->
+                <!---->
+                <!--<button name="act_schedule" states="h" type="workflow"-->
+                <!--string="Schedule Exam" icon="gtk-go-forward" />-->
+                <!---->
+                <!--<button name="act_cancel" states="n,h,s" type="workflow"-->
+                <!--string="Cancel" icon="gtk-go-forward" />-->
+                <!---->
+                <!--<button name="act_done" states="s" type="workflow"-->
+                <!--string="Done" icon="gtk-convert" />-->
+                <!---->
+                <!--<button name="act_new_exam" states="c" type="workflow"-->
+                <!--string="New Exam" icon="gtk-convert" />-->
+                <!--</span>-->
+                <!--</header>-->
+                <!--<sheet>-->
+                <!--<group col="4" colspan="4">-->
+                <!--<field name="session_id" />-->
+                <!--<field name="name" />-->
+                <!--<field name="subject_id" />-->
+                <!--<field name="division_id" />-->
+                <!--<field name="exam_code" />-->
+                <!--<field name="exam_type" />-->
+                <!--<field name="start_time" />-->
+                <!--<field name="end_time" />-->
+                <!--<field name="evaluation_type" />-->
+                <!--<field name="venue" context="{'show_address': 1}" options='{"always_reload": True}' />-->
+                <!--<newline />-->
+                <!--<field name="total_marks" />-->
+                <!--<field name="min_marks" />-->
+                <!--</group>-->
+                <!--<field name="attendees_line" colspan="4" nolabel="1" />-->
+                <!--<separator colspan="4" string="Discription" />-->
+                <!--<field name="note" colspan="4" />-->
+                <!--</sheet>-->
+                <!--</form>-->
+            </field>
+        </record>
+
+    </data>
+</openerp>
