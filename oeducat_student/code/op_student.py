@@ -27,3 +27,16 @@ class Student(models.Model):
     _inherit = 'op.student'
 
     contract_ids = fields.Many2many('education_contract.contract', string='Contratos')
+
+    @api.depends('roll_number_line', 'roll_number_line.roll_number',
+                 'roll_number_line.student_id', 'roll_number_line.standard_id',
+                 'roll_number_line.standard_id.sequence')
+    def _get_curr_roll_number(self):
+        for student in self:
+            roll_no = 0
+            seq = 0
+            for roll_number in student.roll_number_line:
+                if roll_number.standard_id.sequence > seq:
+                    roll_no = roll_number.roll_number
+                    seq = roll_number.standard_id.sequence
+            student.roll_number = roll_no
