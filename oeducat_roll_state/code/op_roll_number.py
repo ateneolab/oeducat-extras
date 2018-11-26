@@ -29,9 +29,12 @@ class OpRollNumber(models.Model):
     _inherit = 'op.roll.number'
 
     state = fields.Selection(
-        [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado')],
+        [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado'), ('relocated', u'Trasladado')],
         default='active', string=u'Estado')
     date_state = fields.Datetime(u'Fecha de cambio de estado')
+    is_active = fields.Boolean(u'Activo', default=True)
+    previous_roll_number_id = fields.Many2one('op.roll.number', string=u'Matrícula anterior')
+    next_roll_number_id = fields.Many2one('op.roll.number', string=u'Matrícula nueva')
 
     @api.onchange('freezing_ids')
     def _onchange_freezing_ids(self):
@@ -44,5 +47,26 @@ class OpRollNumber(models.Model):
                     self.frozen = True
                     self.state = 'inactive'
                     self.date_state = datetime.datetime.today()
+
+    @api.multi
+    def open_relocate_wizard(self):
+        wizard_form = self.env.ref('oeducat_roll_state.view_wizard_relocate_student_form', False)
+        view_id = self.env['op.wizard_relocate']
+        new = view_id.create({})
+
+        return {
+            'name': "Trasladar estudiante",
+            'type': 'ir.actions.act_window',
+            'res_model': 'op.wizard_relocate',
+            'res_id': new.id,
+            'view_id': wizard_form.id,
+            'view_mode': 'form',
+            'view_type': 'form',
+            'nodestroy': True,
+            'target': 'new',
+            'context': {'default_current_roll_number_id': self.id}
+        }
+
+
 
 

@@ -26,6 +26,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
+        'wizard/wizard_relocate_view.xml',
         'views/op_roll_number_view.xml',
         'cron.xml',
     ],

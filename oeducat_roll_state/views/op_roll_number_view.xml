@@ -8,6 +8,13 @@
             <field name="inherit_id" ref="openeducat_erp.view_op_roll_number_form"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
+                <!--<sheet position="before">-->
+                    <!--<header>-->
+                        <!--<button name="open_relocate_wizard" states="active,inactive" type="object" string="Trasladar"-->
+                                <!--class="oe_highlight"/>-->
+                    <!--</header>-->
+                <!--</sheet>-->
+
                 <field name="division_id" position="after">
                     <field name="state" string="Estado"/>
                     <!--<field name="date_state" string="Fecha de cambio de estado" invisible="1"/>-->
@@ -16,6 +23,13 @@
                 <field name="course_id" position="before">
                     <field name="student_id" string="Estudiante"/>
                 </field>
+
+                <!--<field name="roll_number" position="before">-->
+                    <!--<field name="previous_roll_number_id" string="Matricula anterior" readonly="1"/>-->
+                <!--</field>-->
+                <!--<field name="student_id" position="before">-->
+                    <!--<field name="next_roll_number_id" string="Traslado" readonly="1"/>-->
+                <!--</field>-->
             </field>
         </record>
 
