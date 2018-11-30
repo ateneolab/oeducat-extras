@@ -41,7 +41,8 @@ class RollNumber(models.Model):
 
 class OpAttendanceSheet(models.Model):
     _name = 'op.attendance.sheet'
-    _inherit = 'op.attendance.sheet'
+    _inherit = ['op.attendance.sheet', 'mail.thread']
+    _description = 'Hoja de asistencia'
 
     @api.one
     @api.onchange('register_id', 'register_id.division_id')
@@ -78,3 +79,7 @@ class OpAttendanceSheet(models.Model):
     attendance_line = fields.One2many(
         'op.attendance.line', 'attendance_id', 'Attendance Line',
         required=True)
+    professor_id = fields.Many2one('op.faculty', string=u'Profesor')
+    operating_unit_id = fields.Many2one(related='register_id.division_id.operating_unit_id', store=True)
+    total_present = fields.Integer('Total Presentes', store=True)
+    total_absent = fields.Integer('Total Ausentes', store=True)

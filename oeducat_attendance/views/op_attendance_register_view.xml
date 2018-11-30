@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_op_attendance_register_form2" model="ir.ui.view">
+            <field name="name">op.attendance.register.form2</field>
+            <field name="model">op.attendance.register</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_attendance_register_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                    <field name="name" string="Nombre"/>
+                </field>
+
+                <field name="code" position="replace">
+                    <field name="code" string="Código"/>
+                </field>
+                <form position="inside">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
