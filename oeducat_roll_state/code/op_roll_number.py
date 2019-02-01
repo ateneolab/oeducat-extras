@@ -67,6 +67,22 @@ class OpRollNumber(models.Model):
             'context': {'default_current_roll_number_id': self.id}
         }
 
+    @api.model
+    def update(self, data):
+        id = data['id']
+        # vals = data['vals']
+        # print(id)
+        # print(vals['roll_number'])
+        rn = self.env['op.roll.number'].browse([id])
+        # if rn:
+        #     rn.write(vals)
+        # print('ok')
+
+        seq = self.env['ir.sequence'].search([('code', '=', 'seq.roll.number')])
+        number = self.env['ir.sequence'].get(seq.code)
+        rn.write({'roll_number': number})
+
+        return True
 
 
 
