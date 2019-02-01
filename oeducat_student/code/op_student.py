@@ -26,7 +26,14 @@ class Student(models.Model):
     _name = 'op.student'
     _inherit = 'op.student'
 
+    @api.one
+    @api.depends('name', 'middle_name', 'partner_id')
+    def _compute_display_name(self):
+        names = [self.parent_id.name, self.name]
+        self.display_name = ' / '.join(filter(None, names))
+
     contract_ids = fields.Many2many('education_contract.contract', string='Contratos')
+    display_name = fields.Char(string='Nombre', compute='_compute_display_name', )
 
     @api.depends('roll_number_line', 'roll_number_line.roll_number',
                  'roll_number_line.student_id', 'roll_number_line.standard_id',

@@ -26,7 +26,7 @@ class OpRollNumber(models.Model):
     _name = 'op.roll.number'
     _inherit = 'op.roll.number'
 
-    operating_unit_id = fields.Many2one('operating.unit', string=_(u'Branch Office'), related='division_id.operating_unit_id', store=True)
+    operating_unit_id = fields.Many2one('operating.unit', string=_(u'Sucursal'), related='division_id.operating_unit_id', store=True)
     company_id = fields.Many2one('res.company', string=_(u'Company'), related='operating_unit_id.company_id', store=True)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
