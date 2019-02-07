@@ -27,13 +27,40 @@ class Student(models.Model):
     _inherit = 'op.student'
 
     @api.one
-    @api.depends('name', 'middle_name', 'partner_id')
+    @api.depends('name', 'middle_name', 'last_name', 'partner_id')
     def _compute_display_name(self):
-        names = [self.parent_id.name, self.name]
+        names = [self.partner_id.name]
         self.display_name = ' / '.join(filter(None, names))
+
+        # if (not self.name or not self.middle_name or not self.last_name) and self.partner_id:
+        #     self.name = self.partner_id.firstname
+        #     if self.partner_id.lastname:
+        #         lastnames = self.partner_id.lastname.split(' ')
+        #         if len(lastnames) > 0:
+        #             self.middle_name = lastnames[0]
+        #         if len(lastnames) > 1:
+        #             self.last_name = lastnames[1]
 
     contract_ids = fields.Many2many('education_contract.contract', string='Contratos')
     display_name = fields.Char(string='Nombre', compute='_compute_display_name', )
+    partner_id = fields.Many2one('res.partner', 'Partner', ondelete="cascade")
+
+    # name = fields.Char(related='partner_id.firstname')
+    # last_name = fields.Char(compute='_compute_names')
+    # middle_name = fields.Char(compute='_compute_names')
+
+    # @api.one
+    # @api.depends('partner_id')
+    # def _compute_names(self):
+    #     if self.partner_id is not None:
+    #         if self.partner_id.firstname:
+    #             self.name = self.partner_id.firstname
+    #         if self.partner_id.lastname:
+    #             lastnames = self.partner_id.lastname.split(' ')
+    #             if len(lastnames) > 0:
+    #                 self.middle_name = lastnames[0]
+    #             if len(lastnames) > 1:
+    #                 self.last_name = lastnames[1]
 
     @api.depends('roll_number_line', 'roll_number_line.roll_number',
                  'roll_number_line.student_id', 'roll_number_line.standard_id',

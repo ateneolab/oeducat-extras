@@ -27,7 +27,6 @@
         # 'security/ir.model.access.csv',
         'templates.xml',
         'views/op_student_view.xml',
-        # 'cron.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
