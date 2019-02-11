@@ -28,8 +28,13 @@ class OpRollNumber(models.Model):
     _name = 'op.roll.number'
     _inherit = 'op.roll.number'
 
+    # state = fields.Selection(
+    #     [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado'), ('relocated', u'Trasladado')],
+    #     default='active', string=u'Estado')
     state = fields.Selection(
-        [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado'), ('relocated', u'Trasladado')],
+        [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado'),
+         ('relocated', u'Cambio de escuela'), ('bochanged', u'Cambio de sucursal'),
+         ('bchange', u'Cambio de beneficiario')],
         default='active', string=u'Estado')
     date_state = fields.Datetime(u'Fecha de cambio de estado')
     is_active = fields.Boolean(u'Activo', default=True)
@@ -83,6 +88,3 @@ class OpRollNumber(models.Model):
         rn.write({'roll_number': number})
 
         return True
-
-
-
