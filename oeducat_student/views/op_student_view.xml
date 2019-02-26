@@ -2,17 +2,6 @@
 <openerp>
     <data>
 
-        <!--<record id="view_op_student_search2" model="ir.ui.view">-->
-        <!--<field name="name">op.student.search2</field>-->
-        <!--<field name="model">op.student</field>-->
-        <!--<field name="inherit_id" ref="openeducat_erp.view_op_student_search"/>-->
-        <!--<field name="arch" type="xml">-->
-        <!--<field name="name">-->
-        <!--<field name="contract_ids"/>-->
-        <!--</field>-->
-        <!--</field>-->
-        <!--</record>-->
-
         <record id="view_op_student_form_2" model="ir.ui.view">
             <field name="name">op.student.form_2</field>
             <field name="model">op.student</field>
@@ -70,20 +59,6 @@
                 </xpath>
                 <xpath expr="//separator[@string='Address Detail']" position="before"/>
 
-
-                <!--<field name="partner_id" position="attributes">-->
-                <!--<attribute name="attrs">{'required': '0'}</attribute>-->
-                <!--</field>-->
-
-                <!--<xpath expr="//separator[@string='Basic Information']" position="before">-->
-                <!--<separator colspan="4" string="Identificación"/>-->
-                <!--<group col="6" colspan="4">-->
-                <!--<field name="type_ced_ruc"/>-->
-                <!--<field name="ced_ruc"/>-->
-                <!--<field name="tipo_persona"/>-->
-                <!--</group>-->
-                <!--</xpath>-->
-
                 <xpath expr="//page[@string='Educational']" position="replace">
                     <page string="Educational">
                         <separator colspan="4" string="Educational Detail"/>
@@ -102,15 +77,19 @@
                         </group>
                     </page>
                 </xpath>
-                <!--<xpath expr="//page[@string='Educational']/group/field[@name='standard_id']" position="replace">-->
-                <!--<field name="standard_id" position="replace"/>-->
-                <!--</xpath>-->
-                <!--<xpath expr="//page[@string='Educational']/group/field[@name='batch_id']" position="replace">-->
-                <!--<field name="batch_id" position="replace"/>-->
-                <!--</xpath>-->
-                <!--<xpath expr="//page[@string='Educational']/group/field[@name='division_id']" position="replace">-->
-                <!--<field name="division_id" position="replace"/>-->
-                <!--</xpath>-->
+            </field>
+        </record>
+
+        <record id="view_op_student_contract_search" model="ir.ui.view">
+            <field name="name">op.student.search</field>
+            <field name="model">op.student</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_student_search"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <field name="name" position="before">
+                    <field name="contract_ids"/>
+                </field>
 
             </field>
         </record>
