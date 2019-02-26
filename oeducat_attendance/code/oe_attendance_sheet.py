@@ -27,8 +27,9 @@ class RollNumber(models.Model):
     _name = 'op.roll.number'
     _inherit = 'op.roll.number'
 
-    @api.one
+    @api.multi
     def is_contract_payment_up_to_date(self):
+        self.ensure_one()
         collection_plan_id = self.env['collection_plan.collection_plan'].search(
             [('contract_id', '=', self.contract_id.id)])[:1]
         payment_term_ids = self.env['education_contract.payment_term'].search(
@@ -54,6 +55,7 @@ class OpAttendanceSheet(models.Model):
             datas = []
 
             for rn in roll_number_ids:
+                payed = rn.is_contract_payment_up_to_date()
                 data_lines.append((0, 0, {
                     'attendance_id': self.id,
                     'student_id': rn.student_id.id,
@@ -62,17 +64,8 @@ class OpAttendanceSheet(models.Model):
                     'standard_id': rn.standard_id.id,
                     'division_id': rn.division_id.id,
                     'attendance_date': self.attendance_date,
-                    'contract_payment_up_to_date': rn.is_contract_payment_up_to_date(),
+                    'contract_payment_up_to_date': payed,
                 }))
-                datas.append({
-                    'attendance_id': self.id,
-                    'student_id': rn.student_id.id,
-                    'present': False,
-                    'course_id': rn.course_id.id,
-                    'standard_id': rn.standard_id.id,
-                    'division_id': rn.division_id.id,
-                    'attendance_date': self.attendance_date,
-                })
 
             self.attendance_line = data_lines
 
