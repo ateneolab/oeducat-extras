@@ -29,7 +29,7 @@ class Student(models.Model):
     @api.one
     @api.depends('name', 'middle_name', 'last_name', 'partner_id')
     def _compute_display_name(self):
-        names = [self.name, self.middle_name, self.last_name, self.partner_id.secondlastname or '']
+        names = [self.name, self.middle_name or '', self.last_name, self.secondlastname or '']
         display_name = ' '.join(filter(None, names))
         self.display_name = display_name
 
