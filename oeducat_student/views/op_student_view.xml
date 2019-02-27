@@ -15,9 +15,10 @@
                 <xpath expr="//div[@class='oe_title']" position="before">
                     <group>
                         <group>
-                            <field name="name" string="Nombres"/>
-                            <field name="middle_name" string="Primer apellido"/>
-                            <field name="last_name" string="Segundo apellido"/>
+                            <field name="firstname" string="Nombre" required="1"/>
+                            <field name="secondname" string="Segundo nombre"/>
+                            <field name="lastname" string="Primer apellido" required="1"/>
+                            <field name="secondlastname" string="Segundo apellido"/>
                         </group>
                         <group>
                             <field name="type_ced_ruc" string="Tipo identificación"/>
@@ -49,10 +50,11 @@
                         </group>
                         <group>
                             <field name="student_email" string="Correo electrónico" required="1"/>
+                            <!--<field name="email" string="Correo electrónico" required="1"/>-->
                             <field name="mobile" string="Celular" required="1"/>
                             <field name="state_id" class="oe_no_button" placeholder="Provincia"
                                    options='{"no_open": True}'/>
-                            <!--<field name="partner_id" string="Datos de cliente" readonly="1"/>-->
+                            <!--<field name="partner_id" string="Datos de cliente" readonly="1" invisible="1"/>-->
                         </group>
                         <field name="invoice_exists" invisible="1" readonly="0"/>
                     </group>

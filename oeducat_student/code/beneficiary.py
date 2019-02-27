@@ -22,17 +22,17 @@ from lxml import etree
 from openerp import models, fields, api
 
 
-class Partner(models.Model):
-    _name = 'education_contract.beneficiary'
-    _inherit = 'education_contract.beneficiary'
-
-    display_name = fields.Char(string='Nombre', compute='_compute_display_name', )
-
-    @api.one
-    @api.depends('student_id', 'partner_id')
-    def _compute_display_name(self):
-        names = [self.student_id.partner_id.name]
-        self.display_name = ' / '.join(filter(None, names))
+# class Partner(models.Model):
+#     _name = 'education_contract.beneficiary'
+#     _inherit = 'education_contract.beneficiary'
+#
+#     display_name = fields.Char(string='Nombre', compute='_compute_display_name', )
+#
+#     @api.one
+#     @api.depends('student_id', 'partner_id')
+#     def _compute_display_name(self):
+#         names = [self.student_id.name, self.student_id.last_name or '']
+#         self.display_name = ' '.join(filter(None, names))
 
 
 class Partner(models.Model):
@@ -52,7 +52,7 @@ class Partner(models.Model):
                     res['street2'] = owner.street2
                     res['property_account_position'] = owner.property_account_position.id
                     res['mobile'] = owner.mobile
-                    res['email'] = owner.email
+                    res['student_email'] = owner.email
                 except:
                     print('nou nou nou...')
         return res

@@ -29,13 +29,17 @@ class Student(models.Model):
     @api.one
     @api.depends('name', 'middle_name', 'last_name', 'partner_id')
     def _compute_display_name(self):
-        names = [self.partner_id.name]
-        self.display_name = ' / '.join(filter(None, names))
+        names = [self.name, self.middle_name, self.last_name, self.partner_id.secondlastname or '']
+        display_name = ' '.join(filter(None, names))
+        self.display_name = display_name
 
     contract_ids = fields.Many2many('education_contract.contract', string='Contratos')
-    display_name = fields.Char(string='Nombre', compute='_compute_display_name', )
+    display_name = fields.Char(string='Nombre', compute='_compute_display_name')
     partner_id = fields.Many2one('res.partner', 'Partner', ondelete="cascade")
-    student_email = fields.Char(related='partner_id.email')
+    student_email = fields.Char(string=u'Correo electrónico')
+    last_name = fields.Char(related='partner_id.lastname')
+    middle_name = fields.Char(related='partner_id.secondname')
+    name = fields.Char(related='partner_id.firstname')
 
     @api.depends('roll_number_line', 'roll_number_line.roll_number',
                  'roll_number_line.student_id', 'roll_number_line.standard_id',
