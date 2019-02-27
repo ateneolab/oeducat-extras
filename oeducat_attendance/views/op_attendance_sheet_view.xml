@@ -11,7 +11,7 @@
                     <field name="attendance_line" colspan="4" nolabel="1">
                         <tree string="Attendance Line" editable="top"
                               colors="red:contract_payment_up_to_date==False">
-                            <field name="contract_payment_up_to_date" invisible="0"/>
+                            <field name="contract_payment_up_to_date" invisible="1"/>
                             <field name="student_id" string="Estudiante"/>
                             <field name="present" string="Presente"/>
                             <field name="remark" string="Observación"/>
