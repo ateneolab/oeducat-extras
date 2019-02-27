@@ -53,3 +53,14 @@ class Student(models.Model):
                     roll_no = roll_number.roll_number
                     seq = roll_number.standard_id.sequence
             student.roll_number = roll_no
+
+    @api.model
+    def create(self, vals):
+        if 'birth_date' in vals:
+            vals.update({'birthdate_date': vals.get('birth_date')})
+        if 'gender' in vals:
+            vals.update({'sex': str(vals.get('gender')).upper()})
+        res = super(Student, self).create(vals)
+        if 'student_email' in vals:
+            res.partner_id.write({'email': vals.get('student_email')})
+        return res
