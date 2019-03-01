@@ -31,7 +31,7 @@
                 <field name="roll_number" position="replace"/>
 
                 <field name="gender" position="attributes">
-                    <attribute name="string">Género</attribute>
+                    <attribute name="string" required="1">Género</attribute>
                 </field>
                 <field name="birth_date" position="attributes">
                     <attribute name="string">Fecha de nacimiento</attribute>
