@@ -32,6 +32,7 @@
 
                 <field name="gender" position="attributes">
                     <attribute name="string" required="1">Género</attribute>
+                    <attribute name="attrs">{'required': '1'}</attribute>
                 </field>
                 <field name="birth_date" position="attributes">
                     <attribute name="string">Fecha de nacimiento</attribute>
