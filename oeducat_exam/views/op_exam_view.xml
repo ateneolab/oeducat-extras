@@ -85,5 +85,19 @@
             </field>
         </record>
 
+        <record id="view_op_student_form_3" model="ir.ui.view">
+            <field name="name">op.student.form_2</field>
+            <field name="model">op.student</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_student_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Exámenes">
+                        <field name="exam_attendance_ids"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
     </data>
 </openerp>
