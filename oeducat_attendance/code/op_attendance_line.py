@@ -26,6 +26,22 @@ class OpAttendanceLine(models.Model):
     _name = 'op.attendance.line'
     _inherit = 'op.attendance.line'
 
-    contract_payment_up_to_date = fields.Boolean(u'Payment up to date')
+    contract_payment_up_to_date = fields.Boolean(u'Al día con los pagos')
+    attendance_id = fields.Many2one('op.attendance.sheet', 'Hoja de asistencia', required=True)
+    course_id = fields.Many2one('op.course', 'Curso', related='attendance_id.register_id.course_id', store=False,
+                                readonly=True)
+    standard_id = fields.Many2one('op.standard', u'Módulo', related='attendance_id.register_id.standard_id',
+                                  store=False, readonly=True)
+    division_id = fields.Many2one('op.division', 'Grupo', related='attendance_id.register_id.division_id', store=False,
+                                  readonly=True)
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+class OpAttendanceSheet(models.Model):
+    _inherit = 'op.attendance.sheet'
+    _rec_name = 'name'
+
+
+class OpStudent(models.Model):
+    _inherit = 'op.student'
+
+    attendance_ids = fields.One2many('op.attendance.line', 'student_id', 'Asistencias')

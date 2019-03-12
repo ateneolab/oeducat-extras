@@ -34,7 +34,7 @@ class OpRollNumber(models.Model):
     state = fields.Selection(
         [('active', u'Asistiendo'), ('inactive', u'Congelado'), ('done', u'Incorporado'), ('gone', u'Retirado'),
          ('relocated', u'Cambio de escuela'), ('bochanged', u'Cambio de sucursal'),
-         ('bchange', u'Cambio de beneficiario')],
+         ('bchange', u'Cambio de beneficiario'), ('inactive', u'No asiste')],
         default='active', string=u'Estado')
     date_state = fields.Datetime(u'Fecha de cambio de estado')
     is_active = fields.Boolean(u'Activo', default=True)

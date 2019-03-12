@@ -95,13 +95,13 @@
                 </field>
 
                 <!--<field name="name" position="before">-->
-                    <!--<field name="contract_ids"/>-->
+                <!--<field name="contract_ids"/>-->
                 <!--</field>-->
 
                 <!--<field name="standard_id" />-->
 
                 <!--<xpath expr="//filter[@string='Standard']" position="after">-->
-                    <!--<filter string="Contrato" domain="[]" context="{'group_by':'contract_ids'}" />-->
+                <!--<filter string="Contrato" domain="[]" context="{'group_by':'contract_ids'}" />-->
                 <!--</xpath>-->
 
             </field>
