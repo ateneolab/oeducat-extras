@@ -33,6 +33,11 @@ class Student(models.Model):
         display_name = ' '.join(filter(None, names))
         self.display_name = display_name
 
+        if self.partner_id.full_name is False or self.partner_id.full_name is None or self.partner_id.full_name == '':
+            print(self.name)
+            print(self.middle_name)
+            print(self.last_name)
+
     contract_ids = fields.Many2many('education_contract.contract', string='Contratos')
     display_name = fields.Char(string='Nombre', compute='_compute_display_name')
     partner_id = fields.Many2one('res.partner', 'Partner', ondelete="cascade")

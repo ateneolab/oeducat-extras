@@ -39,6 +39,34 @@
                     <field name="division_id" required="1"/>
                 </field>
 
+                <field name="subject_id" position="replace">
+                    <field name="subject_id" required="0" string="Tema"/>
+                </field>
+                <field name="start_time" position="replace">
+                    <field name="start_time" required="0" string="Hora de inicio"/>
+                </field>
+                <field name="end_time" position="replace">
+                    <field name="end_time" required="0" string="Hora de terminación"/>
+                </field>
+                <field name="exam_code" position="replace">
+                    <field name="exam_code" required="1" string="Código"/>
+                </field>
+                <field name="evaluation_type" position="replace">
+                    <field name="evaluation_type" required="1" string="Tipo de evaluación"/>
+                </field>
+                <field name="total_marks" position="replace">
+                    <field name="total_marks" required="0" string="Puntuación máxima"/>
+                </field>
+                <field name="min_marks" position="replace">
+                    <field name="min_marks" required="0" string="Puntuación mínima"/>
+                </field>
+                <field name="exam_type" position="replace">
+                    <field name="exam_type" required="1" string="Tipo de examen"/>
+                </field>
+                <field name="division_id" position="replace">
+                    <field name="division_id" required="1" string="Grupo"/>
+                </field>
+
 
                 <!--<form string="Exam" version="7.0">-->
                 <!--<header>-->

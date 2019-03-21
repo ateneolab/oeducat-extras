@@ -26,6 +26,18 @@
                             <field name="tipo_persona" string="Tipo persona" context="{'default_tipo_persona': 6}"/>
                         </group>
                     </group>
+
+                    <group>
+                        <group>
+                            <field name="name" string="Nombre estudiante"/>
+                            <field name="partner_id" string="Cliente"/>
+                        </group>
+                        <group>
+                            <field name="middle_name" string="Segundo nombre"/>
+                            <field name="last_name" string="Primer apellido" required="1"/>
+                        </group>
+                    </group>
+
                 </xpath>
                 <xpath expr="//div[@class='oe_title']" position="replace"/>
                 <field name="roll_number" position="replace"/>
@@ -61,10 +73,13 @@
                     </group>
                 </xpath>
                 <xpath expr="//separator[@string='Address Detail']" position="before"/>
+                <xpath expr="//separator[@string='Basic Information']" position="attributes">
+                    <attribute name="string">Información básica</attribute>
+                </xpath>
 
                 <xpath expr="//page[@string='Educational']" position="replace">
                     <page string="Educational">
-                        <separator colspan="4" string="Educational Detail"/>
+                        <separator colspan="4" string="Detalles educativos"/>
                         <group col="4" colspan="4">
                             <field name="course_id" invisible="1"/>
                             <field name="standard_id" invisible="1"/>
@@ -80,6 +95,35 @@
                         </group>
                     </page>
                 </xpath>
+
+                <!--<xpath expr="//page[@string='Educational']" position="attributes">-->
+                    <!--<attribute name="string">Educativo</attribute>-->
+                <!--</xpath>-->
+                <xpath expr="//page[@string='Details']" position="attributes">
+                    <attribute name="string">Detalles</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Assignments']" position="attributes">
+                    <attribute name="string">Asignaciones</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Library']" position="attributes">
+                    <attribute name="string">Biblioteca</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Alumni Details']" position="attributes">
+                    <attribute name="string">Detalles de ex alumnos</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Placement Offer']" position="attributes">
+                    <attribute name="string">Oferta de empleo</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Activity Log']" position="attributes">
+                    <attribute name="string">Registro de actividades</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Parent']" position="attributes">
+                    <attribute name="string">Padres</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Health Detail']" position="attributes">
+                    <attribute name="string">Información de salud</attribute>
+                </xpath>
+
             </field>
         </record>
 
@@ -89,21 +133,9 @@
             <field name="inherit_id" ref="openeducat_erp.view_op_student_search"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-
                 <field name="name" position="before">
                     <field name="contract_ids"/>
                 </field>
-
-                <!--<field name="name" position="before">-->
-                <!--<field name="contract_ids"/>-->
-                <!--</field>-->
-
-                <!--<field name="standard_id" />-->
-
-                <!--<xpath expr="//filter[@string='Standard']" position="after">-->
-                <!--<filter string="Contrato" domain="[]" context="{'group_by':'contract_ids'}" />-->
-                <!--</xpath>-->
-
             </field>
         </record>
 

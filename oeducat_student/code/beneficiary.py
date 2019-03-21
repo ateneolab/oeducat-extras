@@ -56,3 +56,29 @@ class Partner(models.Model):
                 except:
                     print('nou nou nou...')
         return res
+
+    @api.one
+    @api.depends('firstname', 'secondname', 'lastname', 'secondlastname', 'name', 'is_company')
+    def _compute_full_name(self):
+        names = []
+        if not self.is_company:
+            if self.firstname not in [None, '', False]:
+                names.append(self.firstname)
+            if self.secondname not in [None, '', False]:
+                names.append(self.secondname)
+            if self.lastname not in [None, '', False]:
+                names.append(self.lastname)
+            if self.secondlastname not in [None, '', False]:
+                names.append(self.secondlastname)
+            if len(names) == 0:
+                names = [self.name]
+        else:
+            names = [self.name or '']
+        full_name = ' '.join(filter(None, names))
+        self.full_name = full_name
+        self.name = full_name
+
+        if self.full_name is False or self.full_name is None or self.full_name == '':
+            print('ok')
+
+        return full_name

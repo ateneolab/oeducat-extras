@@ -50,7 +50,7 @@
                     <filter string="Fecha" domain="[]"
                             context="{'group_by':'attendance_date'}"/>
                 </group>
-                <xpath expr="//filter[@string='Date']" position="replace"/>
+                <xpath expr="//filter[@string='Fecha']" position="replace"/>
             </field>
         </record>
     </data>

@@ -8,80 +8,58 @@
             <field name="inherit_id" ref="openeducat_erp.view_op_roll_number_form"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <!--<sheet position="before">-->
-                <!--<header>-->
-                <!--<button name="open_relocate_wizard" states="active,inactive" type="object" string="Trasladar"-->
-                <!--class="oe_highlight"/>-->
-                <!--</header>-->
-                <!--</sheet>-->
-
                 <field name="division_id" position="after">
                     <field name="state" string="Estado"/>
-                    <!--<field name="date_state" string="Fecha de cambio de estado" invisible="1"/>-->
                 </field>
-
                 <field name="division_id" position="attributes">
                     <attribute name="attrs">{'required': '1'}</attribute>
+                    <attribute name="string">Grupo</attribute>
                 </field>
-
+                <field name="batch_id" position="attributes">
+                    <attribute name="string">Edición</attribute>
+                </field>
+                <field name="standard_id" position="attributes">
+                    <attribute name="string">Módulo</attribute>
+                </field>
+                <!--<field name="operating_unit_id" position="attributes">-->
+                    <!--<attribute name="string">Sucursal</attribute>-->
+                <!--</field>-->
                 <field name="course_id" position="before">
                     <field name="student_id" string="Estudiante"/>
                 </field>
-
-                <!--<field name="roll_number" position="before">-->
-                <!--<field name="previous_roll_number_id" string="Matricula anterior" readonly="1"/>-->
-                <!--</field>-->
-                <!--<field name="student_id" position="before">-->
-                <!--<field name="next_roll_number_id" string="Traslado" readonly="1"/>-->
-                <!--</field>-->
             </field>
         </record>
 
+        <record id="view_op_roll_number_tree_2" model="ir.ui.view">
+            <field name="name">op.roll.number.tree2</field>
+            <field name="model">op.roll.number</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_roll_number_tree"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="roll_number" position="attributes">
+                    <attribute name="string"># de matrícula</attribute>
+                </field>
+                <field name="course_id" position="attributes">
+                    <attribute name="string">Curso</attribute>
+                </field>
+                <field name="batch_id" position="attributes">
+                    <attribute name="string">Edición</attribute>
+                </field>
+                <field name="standard_id" position="attributes">
+                    <attribute name="string">Módulo</attribute>
+                </field>
+                <field name="student_id" position="attributes">
+                    <attribute name="string">Estudiante</attribute>
+                </field>
+                <field name="division_id" position="attributes">
+                    <attribute name="string">Grupo</attribute>
+                </field>
 
-        <!--<record id="view_op_roll_number_form3" model="ir.ui.view">-->
-        <!--<field name="name">op.roll.number.form3</field>-->
-        <!--<field name="model">op.roll.number</field>-->
-        <!--<field name="inherit_id" ref="oeducat_roll_state.view_op_roll_number_form2"/>-->
-        <!--<field name="priority" eval="8"/>-->
-        <!--<field name="arch" type="xml">-->
-        <!--<field name="date_state" position="after">-->
-        <!--<field name="frozen"/>-->
-        <!--</field>-->
-        <!--</field>-->
-        <!--</record>-->
-
-        <!--<record id="view_op_roll_number_search" model="ir.ui.view">-->
-        <!--<field name="name">op.roll.number.search</field>-->
-        <!--<field name="model">op.roll.number</field>-->
-        <!--<field name="inherit_id" ref="openeducat_erp.view_op_roll_number_search"/>-->
-        <!--<field name="priority" eval="8"/>-->
-        <!--<field name="arch" type="xml">-->
-        <!--<field name="student_id" position="after">-->
-        <!--<field name="contract_id"/>-->
-        <!--</field>-->
-        <!--<filter string="Student" position="after">-->
-        <!--<filter string="Contrato" domain="[]" context="{'group_by':'contract_id'}"/>-->
-        <!--</filter>-->
-
-        <!--<search string="Roll Number">
-            <field name="roll_number" />
-            <field name="course_id" />
-            <field name="batch_id" />
-            <field name="standard_id" />
-            <field name="student_id" />
-            <newline />
-            <group expand="0" string="Group By...">
-                <filter string="Roll Number" domain="[]"
-                    context="{'group_by':'roll_number'}" />
-                <filter string="Course" domain="[]" context="{'group_by':'course_id'}" />
-                <filter string="Batch" domain="[]" context="{'group_by':'batch_id'}" />
-                <filter string="Standard" domain="[]"
-                    context="{'group_by':'standard_id'}" />
-                <filter string="Student" domain="[]" context="{'group_by':'student_id'}" />
-            </group>
-        </search>-->
-        <!--</field>-->
-        <!--</record>-->
+                <xpath expr="//tree[@string='Roll Number']" position="attributes">
+                    <attribute name="string"># de matrícula</attribute>
+                </xpath>
+            </field>
+        </record>
 
     </data>
 </openerp>

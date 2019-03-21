@@ -60,37 +60,40 @@
                 </field>
             </field>
         </record>
-        <record id="view_op_attendance_line_search" model="ir.ui.view">
+        <record id="view_op_attendance_line_search_2" model="ir.ui.view">
             <field name="name">op.attendance.line.search</field>
             <field name="model">op.attendance.line</field>
+            <field name="inherit_id" ref="openeducat_erp.view_op_attendance_line_search"/>
             <field name="priority" eval="7"/>
             <field name="arch" type="xml">
-                <search string="Attendance Line">
-                    <field name="attendance_id"/>
-                    <field name="student_id"/>
-                    <field name="present"/>
-                    <newline/>
-                    <group expand="0" string="Agrupar por...">
-                        <filter string="Asistencia" domain="[]"
-                                context="{'group_by':'attendance_id'}"/>
-                        <filter string="Curso" domain="[]" context="{'group_by':'course_id'}"/>
-                        <filter string="Módulo" domain="[]"
-                                context="{'group_by':'standard_id'}"/>
-                        <filter string="Grupo" domain="[]"
-                                context="{'group_by':'division_id'}"/>
-                        <filter string="Estudiante" domain="[]" context="{'group_by':'student_id'}"/>
-                        <filter string="Presente ?" domain="[]" context="{'group_by':'present'}"/>
-                    </group>
-                </search>
+                <xpath expr="//search" position="replace">
+                    <search string="Línea de asistencia">
+                        <field name="attendance_id" string="Asistencia"/>
+                        <field name="student_id" string="Estudiante"/>
+                        <field name="present" string="Presente"/>
+                        <newline/>
+                        <group expand="0" string="Agrupar por...">
+                            <filter string="Asistencia" domain="[]"
+                                    context="{'group_by':'attendance_id'}"/>
+                            <!--<filter string="Curso" domain="[]" context="{'group_by':'cou_search'}"/>-->
+                            <!--<filter string="Módulo" domain="[]"-->
+                                    <!--context="{'group_by':'sta_search'}"/>-->
+                            <filter string="Grupo" domain="[]"
+                                    context="{'group_by':'div_search'}"/>
+                            <filter string="Estudiante" domain="[]" context="{'group_by':'student_id'}"/>
+                            <filter string="Presente ?" domain="[]" context="{'group_by':'present'}"/>
+                        </group>
+                    </search>
+                </xpath>
             </field>
         </record>
         <record model="ir.actions.act_window" id="act_open_op_attendance_line_view">
-            <field name="name">Attendance Line</field>
+            <field name="name">Línea de asistencia</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">op.attendance.line</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="search_view_id" ref="view_op_attendance_line_search"/>
+            <field name="search_view_id" ref="view_op_attendance_line_search_2"/>
             <field name="domain">[]</field>
             <field name="context">{}</field>
         </record>

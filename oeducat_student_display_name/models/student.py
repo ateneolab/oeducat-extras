@@ -30,5 +30,5 @@ class OpStudent(models.Model):
     def name_get(self):
         result = []
         for rec in self:
-            result.append((rec.id, u'%s' % rec.display_name))
+            result.append((rec.id, u'%s' % rec.partner_id.display_name or rec.partner_id.full_name))
         return result

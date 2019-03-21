@@ -30,10 +30,13 @@ class OpAttendanceLine(models.Model):
     attendance_id = fields.Many2one('op.attendance.sheet', 'Hoja de asistencia', required=True)
     course_id = fields.Many2one('op.course', 'Curso', related='attendance_id.register_id.course_id', store=False,
                                 readonly=True)
+    cou_search = fields.Many2one('op.course', 'Curso', related='course_id', store=True, readonly=True)
     standard_id = fields.Many2one('op.standard', u'Módulo', related='attendance_id.register_id.standard_id',
                                   store=False, readonly=True)
+    sta_search = fields.Many2one('op.standard', u'Módulo', related='standard_id', store=True, readonly=True)
     division_id = fields.Many2one('op.division', 'Grupo', related='attendance_id.register_id.division_id', store=False,
                                   readonly=True)
+    div_search = fields.Many2one('op.division', 'Grupo', related='division_id', store=True, readonly=True)
 
 
 class OpAttendanceSheet(models.Model):
