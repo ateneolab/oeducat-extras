@@ -43,7 +43,8 @@ class OpStudent(models.Model):
             div_ids.append(rn.division_id)
             
         for div in div_ids:
-            op_ids.append(div.operating_unit_id.id)
+            if div.operating_unit_id:
+                op_ids.append(div.operating_unit_id.id)
         
         self.operating_unit_ids = [(6, 0, op_ids)]
     
