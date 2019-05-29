@@ -27,6 +27,6 @@ class OpDivision(models.Model):
     _inherit = 'op.division'
 
     operating_unit_id = fields.Many2one('operating.unit', string=_(u'Branch Office'))
-    company_id = fields.Many2one('res.company', string=_(u'Company'), related='operating_unit_id.company_id')
+    company_id = fields.Many2one('res.company', string=_(u'Company'), related='operating_unit_id.company_id', store=True)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

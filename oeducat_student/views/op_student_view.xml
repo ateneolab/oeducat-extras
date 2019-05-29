@@ -29,12 +29,12 @@
 
                     <group>
                         <group>
-                            <field name="name" string="Nombre estudiante"/>
-                            <field name="partner_id" string="Cliente"/>
+                            <field name="name" string="Nombre estudiante" invisible="1"/>
+                            <field name="partner_id" string="Cliente" invisible="1" required="0"/>
                         </group>
                         <group>
-                            <field name="middle_name" string="Segundo nombre"/>
-                            <field name="last_name" string="Primer apellido" required="1"/>
+                            <field name="middle_name" string="Segundo nombre" invisible="1"/>
+                            <field name="last_name" string="Primer apellido" invisible="1"/>
                         </group>
                     </group>
 
